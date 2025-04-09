@@ -1,10 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Botoes from './components/botoes';
+import Cabecalho from './components/cabecalho';
+import Rodape from './components/rodape';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Cabecalho></Cabecalho>
+      <Botoes></Botoes>
+      <Rodape></Rodape>
       <StatusBar style="auto" />
     </View>
   );
@@ -16,5 +21,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+    display: "flex",
+    flexDirection:"column",
+    fontFamily: "Poppins-Regular"
+  }
 });
