@@ -1,17 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Botoes from './components/botoes';
-import Cabecalho from './components/cabecalho';
-import Rodape from './components/rodape';
+import LoginPage from './screens/LoginPage';
+import HomePage from './screens/HomePage';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Cabecalho></Cabecalho>
-      <Botoes></Botoes>
-      <Rodape></Rodape>
-      <StatusBar style="auto" />
-    </View>
+    <HomePage />
   );
 }
 
