@@ -1,4 +1,5 @@
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation, router } from "expo-router";
 /* import PagerView from 'react-native-pager-view'; */
 import BotoesAtalho from "../components/BotoesAtalho";
 import BotoesPequenos from "../components/BotoesPequenos";
@@ -14,7 +15,7 @@ const HomePage = () => {
             <Text style={[styles.titulo, styles.cor]}>Usuario!</Text>
             <Text style={styles.atalhos}>Atalhos rápidos</Text>
             <View style={styles.caixadeatalhos}>
-                <BotoesAtalho imagem={require('../assets/ImagesHomePage/Chat.png')} titulo="Chat"/>
+                <BotoesAtalho imagem={require('../assets/ImagesHomePage/Chat.png')} titulo="Chat" acao={() => router.push("/chatpage")}/>
                 <BotoesAtalho imagem={require('../assets/ImagesHomePage/Atividades.png')} titulo="Atividades"/>
                 <BotoesAtalho imagem={require('../assets/ImagesHomePage/Respiracao.png')} titulo="Respiração"/>
                 <BotoesAtalho imagem={require('../assets/ImagesHomePage/Humor.png')} titulo="Humor"/>
@@ -68,7 +69,8 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     }, 
     container:{
-        flex: 1
+        flex: 1,
+        backgroundColor: "#fff",
     },
     titulo:{
         fontSize: 26,

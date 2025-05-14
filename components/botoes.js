@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const logoGoogle = require("../assets/icone-google.png");
@@ -5,7 +6,7 @@ const logoEmail = require("../assets/icone-email.png");
 const Botoes = () => {
     return(
         <View>
-            <TouchableOpacity style={styles.botaoGoogle}>
+            <TouchableOpacity style={styles.botaoGoogle} onPress={() => router.push("/homepage")}>
                 <Text>Entrar com o Google</Text>
                 <Image source={logoGoogle} style={styles.imagemGoogle}></Image>
             </TouchableOpacity>

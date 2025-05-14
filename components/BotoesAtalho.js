@@ -1,8 +1,8 @@
 import { Image, TouchableOpacity, View, StyleSheet, Text } from "react-native";
 
-const BotoesAtalho = ({imagem, titulo}) => {
+const BotoesAtalho = ({imagem, titulo, acao}) => {
     return <View style={styles.caixa}>
-            <TouchableOpacity style={styles.container}>
+            <TouchableOpacity style={styles.container} onPress={acao}>
                 <View>
                     <Image source={imagem}></Image>
                 </View>
