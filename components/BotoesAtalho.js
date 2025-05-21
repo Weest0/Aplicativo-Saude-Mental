@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     }, 
     texto:{
         color: "black",
-        fontSize: 10,
+        fontSize: 15,
         marginTop: 10,
     },
     caixa:{

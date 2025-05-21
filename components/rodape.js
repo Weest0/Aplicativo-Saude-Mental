@@ -23,17 +23,22 @@ const Rodape = () => {
 };
 
 const styles = StyleSheet.create({
+    container:{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        
+    },
     box:{
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
         width: "100%",
         gap: 20,
     },
     texto:{
         marginTop:30,
-        marginBottom: 5
+        marginBottom: 10
     }
 });
 

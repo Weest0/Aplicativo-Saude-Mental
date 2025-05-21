@@ -1,4 +1,4 @@
-import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { Image, KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import { router } from "expo-router"
 import Mensagem from "../components/mensagem";
 import { useEffect, useState } from "react";
@@ -44,7 +44,7 @@ const ChatPage = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0} >
             <ScrollView style={{flex: 0.9}}>
                 <View>
                     <ScrollView>
@@ -73,7 +73,7 @@ const ChatPage = () => {
                         <Image source={require("../assets/enviar.png")}></Image>
                 </TouchableOpacity>
             </View>
-        </View>
+        </KeyboardAvoidingView>
     )
 };
 
@@ -81,13 +81,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+        padding: 30,
+        height: "90%",
     },
     campotexto:{
-        width: 240,
+        width: "85%",
         height: 40,
         borderRadius: 20,
         backgroundColor: "#E1DFDC",
-        marginLeft: 30,
         paddingLeft: 15,
         flexDirection: "row",
         display: "flex",
@@ -99,11 +100,11 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
     caixamensagem:{
-        position: "fixed",
-        bottom: "3%",
         display: "flex",
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingBottom: "20%"
     },
     botaoenviar:{
         width: 40,
@@ -113,7 +114,6 @@ const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginLeft: 10,
     },
 })
 

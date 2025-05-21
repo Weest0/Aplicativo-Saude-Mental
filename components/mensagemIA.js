@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
         maxWidth: "60%",
         backgroundColor: "#A8DADC",
         borderRadius: 20,
-        marginLeft: 30,
         display: "flex",
         justifyContent: "center",
         alignItems: "start",
