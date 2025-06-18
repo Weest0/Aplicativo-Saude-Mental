@@ -10,7 +10,7 @@ const Botoes = () => {
                 <Text>Entrar com o Google</Text>
                 <Image source={logoGoogle} style={styles.imagemGoogle}></Image>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.botãoEmail}>
+            <TouchableOpacity style={styles.botãoEmail} onPress={() => router.push("/loginEmail")}>
                 <Text style={styles.texto}>Entrar com o Email</Text>
                 <Image source={logoEmail} style={styles.imagemGoogle}></Image>
             </TouchableOpacity>
