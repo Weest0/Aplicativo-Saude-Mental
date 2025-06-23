@@ -13,7 +13,7 @@ const LoginPage = () => {
         <StatusBar style="auto" />
     </View>
     )
-}
+} 
 
 const styles = StyleSheet.create({
   container: {

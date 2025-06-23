@@ -6,24 +6,27 @@ import { supabase } from "../supabase";
 import { useState } from "react";
 import { router } from "expo-router";
 
-const loginEmail = () => {
+const criarConta = () => {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [carregamento, setCarregamento] = useState(false)
 
-    async function signInWithEmail() {
+    async function signUpWithEmail() {
         setCarregamento(true)
-        const { error } = await supabase.auth.signInWithPassword({
+        const{
+            data: {session},
+            error,
+        } = await supabase.auth.signUp({
             email: email,
-            password: senha,
+            password: senha
         })
-
+        
         if(error){
             Alert.alert(error.message)
         } else {
             router.push('/homepage')
         }
-        setCarregamento(false)
+        setCarregamento(false);
     }
 
     return(
@@ -31,11 +34,8 @@ const loginEmail = () => {
             <CampoTexto nome={"Email"} funcao={setEmail} valor={email}/>
             <CampoTexto nome={"Senha"} funcao={setSenha} valor={senha}/>
             <StatusBar style="auto"/>
-            <TouchableOpacity style={styles.botao} onPress={() => signInWithEmail()}>
-                <Text>Entrar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.textoconta} onPress={() => router.push('/criarConta')}>
-                <Text>Crie uma conta aqui.</Text>
+            <TouchableOpacity style={styles.botao} onPress={() => signUpWithEmail()}>
+                <Text>Criar</Text>
             </TouchableOpacity>
         </View>
     )
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default loginEmail;
+export default criarConta;

@@ -6,7 +6,7 @@ const logoEmail = require("../assets/icone-email.png");
 const Botoes = () => {
     return(
         <View>
-            <TouchableOpacity style={styles.botaoGoogle} onPress={() => router.push("/homepage")}>
+            <TouchableOpacity style={styles.botaoGoogle} onPress={() => router.push("")}>
                 <Text>Entrar com o Google</Text>
                 <Image source={logoGoogle} style={styles.imagemGoogle}></Image>
             </TouchableOpacity>

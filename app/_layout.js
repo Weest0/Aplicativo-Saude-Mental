@@ -4,8 +4,9 @@ import { router } from 'expo-router';
 
 const Layout = () => {
   return <Stack>
-    <Stack.Screen name="loginEmail" options={{ headerShown: false }} />
     <Stack.Screen name="index" options={{ headerShown: false }} />
+    <Stack.Screen name="loginEmail" options={{ headerShown: false }} />
+    <Stack.Screen name="criarConta" options={{ headerShown: false }} />
     <Stack.Screen name="homepage" options={{ headerShown: false }} />
     <Stack.Screen name="chatpage" options={{ 
             title: "Chat - IA",

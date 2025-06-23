@@ -1,10 +1,29 @@
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation, router } from "expo-router";
-import PagerView from 'react-native-pager-view';
+/* import PagerView from 'react-native-pager-view'; */
 import BotoesAtalho from "../components/BotoesAtalho";
 import BotoesPequenos from "../components/BotoesPequenos";
+import { useEffect, useState } from "react";
+import { supabase } from "../supabase";
+
 
 const HomePage = () => {
+    const [session, setSession] = useState(null);
+
+    useEffect(() => {
+        supabase.auth.getSession().then(({data: {session}}) => {
+            setSession(session)
+        })
+
+        const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+            setSession(session)
+        })
+
+        return () => { 
+            listener.subscription?.unsubscribe();
+        }
+    }, [])
+
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.cabecalho}>
@@ -12,7 +31,7 @@ const HomePage = () => {
                 <BotoesPequenos imagem={require('../assets/ImagesHomePage/icone-notificação.png')}/>
             </View>
             <Text style={styles.titulo}>Bem Vindo(a),</Text>
-            <Text style={[styles.titulo, styles.cor]}>Usuario!</Text>
+            <Text style={[styles.titulo, styles.cor]}>{session && session.user && <Text>{session.user.email}</Text>}</Text>
             <Text style={styles.atalhos}>Atalhos rápidos</Text>
             <View style={styles.caixadeatalhos}>
                 <BotoesAtalho imagem={require('../assets/ImagesHomePage/Chat.png')} titulo="Chat" acao={() => router.push("/chatpage")}/>
@@ -20,16 +39,16 @@ const HomePage = () => {
                 <BotoesAtalho imagem={require('../assets/ImagesHomePage/Respiracao.png')} titulo="Respiração"/>
                 <BotoesAtalho imagem={require('../assets/ImagesHomePage/Humor.png')} titulo="Humor"/>
             </View>
-            <View style={styles.caixadecarrossel}>
+            {/* <View style={styles.caixadecarrossel}>
                 <PagerView initialPage={0}>
                     <View key="1"><Text>Experimente uma sessão de respiração guiada!</Text></View>
                     <View key="2"><Text>Experimente uma sessão de respiração guiada!</Text></View>
                     <View key="3"><Text>Experimente uma sessão de respiração guiada!</Text></View>
                 </PagerView>
-            </View>
-            {/* <View style={styles.caixadecarrossel}>
-                <Text style={styles.textocarrossel}>Experimente uma sessão de respiração guiada!</Text>
             </View> */}
+            <View style={styles.caixadecarrossel}>
+                <Text style={styles.textocarrossel}>Experimente uma sessão de respiração guiada!</Text>
+            </View>
             <View style={styles.caixadepesquisa}>
                 <Text style={styles.titulopesquisa}>Como se sente hoje?</Text>
                 <Text style={styles.subtitulopesquisa}>Nos ajute a te ajudar!{"\n"}Responda nosso questionário.</Text>
